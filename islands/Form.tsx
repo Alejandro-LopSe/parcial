@@ -20,8 +20,10 @@ export const Form: FunctionComponent = ( )=>{
     const check =  ()=>{
         if(!word || word===""){
             seterror("Please enter a word")
+        }else{
+            api()
         }
-        api()
+        
     }
 
     const api = async ()=>{
