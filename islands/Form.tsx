@@ -5,10 +5,10 @@ import {Defs} from "../components/Defs.tsx"
 
 export type dic = {
     word: string
-    meanings: [{
-        definitions: [{
-            definition: string
-            example: string
+    meanings?: [{
+        definitions?: [{
+            definition?: string
+            example?: string
         }]
     }]
 }
@@ -26,9 +26,14 @@ export const Form: FunctionComponent = ( )=>{
 
     const api = async ()=>{
             const apiresponse =await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_US/${word}`)
-            const data: dic []=await apiresponse.json()
-            setresponse(data)
-            seterror("")
+            if(apiresponse.status!==200){
+                setresponse([{word: word || ""}])
+            }else{
+                const data: dic []=await apiresponse.json()            
+                setresponse(data)
+                seterror("")
+            }
+            
 
     }
     return(

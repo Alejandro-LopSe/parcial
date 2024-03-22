@@ -8,8 +8,8 @@ export const Defs: FunctionComponent<{definitions: dic[] | undefined}> = ( {defi
         <h1>{definitions[0].word}</h1>
             {definitions.map((elem:dic)=>{ 
                 
-                return(elem.meanings.map((elem2)=>{
-                    return (elem2.definitions.map((elem3)=>{
+                return(elem.meanings && elem.meanings.map((elem2)=>{
+                    return (elem2. definitions && elem2.definitions.map((elem3)=>{
                         {console.log(elem3.definition,elem3.example)}
                         return(
                             <li class="inp">
